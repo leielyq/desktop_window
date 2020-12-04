@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
-
 class DesktopWindow {
-  static const MethodChannel _channel =
-      const MethodChannel('desktop_window');
+  static const MethodChannel _channel = const MethodChannel('desktop_window');
 
   static Future<Size> getWindowSize() async {
     final arr = await _channel.invokeMethod('getWindowSize');
@@ -19,6 +17,22 @@ class DesktopWindow {
   static Future setWindowSize(Size size) async {
     return await _channel.invokeMethod(
         'setWindowSize', {'width': size.width, 'height': size.height});
+  }
+
+  static Future getLoaclIp() async {
+    return await _channel.invokeMethod('GetLocalIP');
+  }
+
+  //path  =  './xxx.exe'
+  static Future open(String path) async {
+    if (path == null || path.isEmpty) return;
+    return await _channel.invokeMethod('open', {'path': path});
+  }
+
+  //name  =  'xxx.exe'
+  static Future close(String name) async {
+    if (name == null || name.isEmpty) return;
+    return await _channel.invokeMethod('close', {'path': name});
   }
 
   static Future setMinWindowSize(Size size) async {

@@ -2,8 +2,8 @@
 
 Flutter plugin for Flutter desktop(macOS/Linux/Windows) to change window size.
 
-
 ## Usage
+
 ```
 import 'package:desktop_window/desktop_window.dart';
 
@@ -20,11 +20,14 @@ Future testWindowFunctions() async {
     bool isFullScreen = await DesktopWindow.getFullScreen();
     await DesktopWindow.setFullScreen(true);
     await DesktopWindow.setFullScreen(false);
+
+    //新增 获取ip 打开窗口 关闭窗口
+
+
+
 }
 ```
-
 
 ## Contributers
 
 Linux support has been contributed by Justus Fluegel (https://github.com/Technikkeller)
-
